@@ -1,0 +1,60 @@
+#outer-wrap {
+   background-image: url("../images/pattern2.jpg");
+   background-size: 15rem;
+   background-repeat: repeat;
+}
+
+#wrap {
+   display: grid;
+   grid-template-columns: 1fr 1.4fr;
+   height: 81%;
+   width: 70%;
+   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
+   #grid1 {
+      background-color: #1972a4;
+   }
+   #grid2 {
+      background-image: url("../images/largeLogo.jpg");
+      background-size: cover;
+   }
+   #login-section {
+      color: #e0eaf0;
+      background-color: #141414;
+      border-radius: 4px;
+      width: 100%;
+      height: 88%;
+      margin-left: 30px;
+      margin-right: 20px;
+      box-shadow: 6px 6px 6px rgb(56, 56, 56 / 0.6);
+      h1 {
+         font-family: "Roboto", sans-serif;
+      }
+      button {
+         background-color: transparent;
+         border: 2px solid rgb(245, 245, 245);
+         border-radius: 20px;
+         text-align: center;
+         transition: 350ms;
+      }
+      input {
+         background-color: transparent;
+         border: 2px solid rgb(245, 245, 245);
+         border-radius: 20px;
+         text-align: center;
+         transition: 350ms;
+      }
+      #input1:focus {
+         outline: none;
+         border: 2px solid rgb(28, 96, 184);
+         margin-right: 0.25rem;
+         margin-left: 0.25rem;
+      }
+      #input2:focus {
+         outline: none;
+         border: 2px solid rgb(28, 96, 184);
+         margin-right: 0.25rem;
+         margin-left: 0.25rem;
+      }
+   }
+}
