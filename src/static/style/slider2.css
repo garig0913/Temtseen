@@ -1,0 +1,13 @@
+#grid {
+   grid-template-columns: 1fr 1.3fr;
+}
+
+#grids {
+   max-height: 650px;
+}
+
+#slider {
+   height: 650px;
+   background-position: center center;
+   background-size: contain;
+}
