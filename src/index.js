@@ -4,7 +4,6 @@ import './index.css'
 import App from './App'
 import Main from './components/Landing/Main';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
 import Login from './components/Login'
 
 ReactDOM.render(

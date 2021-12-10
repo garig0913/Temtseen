@@ -38,7 +38,7 @@ const Slider = props => {
                 <div id='slider' className='w-full h-screen' style={{ backgroundImage: `url(${images[2]})` }}></div>
             </Carousel>
             <div id='text' className='flex flex-col'>
-                <h1 className='text-5xl font-bold mb-9 text-white'>Find the perfect freelance services for your business</h1>
+                <h1 style={{ color: `${props.colors[colorIndex]}`, textShadow: '1px 1px 3px #131313' }} className='text-5xl font-bold mb-9'>Find the perfect freelance services for your business</h1>
                 <div className='flex h-12 justify-center items-center '>
                     <div className='h-full w-14 bg-white text-gray-600 rounded-l flex justify-center items-center'><BsSearch /></div>
                     <input placeholder='Try "Website Developer"' className='flex h-full w-full focus:outline-none icon text-gray-900 pb-1 font-medium'></input>
