@@ -1,97 +1,193 @@
-import React, { Component, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component, useState } from "react";
+import ReactDOM from "react-dom";
+import WebFont from "webfontloader";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import '../../static/style/slider2.css'
-import { Carousel } from 'react-responsive-carousel';
-import { BsSearch } from 'react-icons/bs'
-import Slider3 from './Slider3';
+import "../../static/style/slider2.scss";
+import { Carousel } from "react-responsive-carousel";
+import { BsSearch } from "react-icons/bs";
+import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
+import "swiper/swiper.min.css";
+import "swiper/modules/pagination/pagination.min.css";
+import "swiper/modules/effect-fade/effect-fade.min.css";
+import "./styles.css";
 
-import { Swiper, SwiperSlide } from 'swiper/react/swiper-react'
-
-import 'swiper/swiper.min.css'
-import 'swiper/modules/pagination/pagination.min.css'
-import 'swiper/modules/effect-fade/effect-fade.min.css'
-
-import './styles.css'
+import Skills from "../Buttons/Skills";
 
 import SwiperCore, {
-    EffectFade, Navigation, Pagination, Autoplay
-} from 'swiper';
+   EffectFade,
+   Navigation,
+   Pagination,
+   Autoplay,
+} from "swiper";
 
 SwiperCore.use([EffectFade, Navigation, Pagination, Autoplay]);
 
+const Slider2 = (props) => {
+   WebFont.load({
+      google: {
+         families: ["Nunito:n7"],
+      },
+   });
+   const data = [
+      {
+         image: "https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-1/hero-instance-1--desktop.webp",
+         color: "#1e0946",
+         skills: [
+            "web design",
+            "ux/ui design",
+            "android app development",
+            "software testing",
+         ],
+         placeholder: "web development",
+      },
+      {
+         image: "https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-6/hero-instance-6--desktop.webp",
+         color: "#f68f84",
+         skills: ["graphic design", "3D logo", "branding", "illustration"],
+         placeholder: "graphic design",
+      },
+      {
+         image: "https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-3/hero-instance-3--desktop.webp",
+         color: "#e3c714",
+         skills: [
+            "wordpress",
+            "php development",
+            "databases",
+            "software testing",
+         ],
+         placeholder: "advertising",
+      },
+      {
+         image: "https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-5/hero-instance-5--desktop.webp",
+         color: "#e6b747",
+         skills: [
+            "amazon store management",
+            "cms development",
+            "link building",
+            "adwords",
+         ],
+         placeholder: "e-commerce",
+      },
+      {
+         image: "https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-4/hero-instance-4--desktop.webp",
+         color: "#e0221b",
+         skills: ["3D logo", "business cards", "branding", "vector logo"],
+         placeholder: "logo design",
+      },
+      {
+         image: "https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-2/hero-instance-2--desktop.webp",
+         color: "#c23707",
+         skills: ["logo design", "illustration", "animation", "3D design"],
+         placeholder: "product design",
+      },
+   ];
 
-const Slider2 = props => {
-    const images = [
-        {
-            image: 'https://images.unsplash.com/photo-1587334274535-5f82e7e55dc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80'
-        },
-        {
-            image: 'https://images.unsplash.com/photo-1615485925807-d11c291f531c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
-        },
-        {
-            image: 'https://images.unsplash.com/photo-1587735243475-46f39636076a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80'
-        },
+   const [slideIndex, setslideIndex] = useState(0);
 
-    ]
+   const changeColor = () => {
+      if (slideIndex === data.length - 1) {
+         setslideIndex(0);
+      } else {
+         setslideIndex(slideIndex + 1);
+      }
+   };
 
-    const test = 'https://images.unsplash.com/photo-1587735243475-46f39636076a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80'
+   let index = Swiper.realIndex;
+   console.log(index);
 
-    // setInterval(() => {
-    //     if (colorIndex === props.colors.length - 1) {
-    //         setColorIndex(0)
-    //     } else {
-    //         setColorIndex(colorIndex + 1)
-    //     }
-    // }, 3000);
-    // const [colorIndex, setColorIndex] = useState(0)
-
-
-    return <>
-        <div id='grid' className='grid grid-cols-2'>
-
+   return (
+      <>
+         <div
+            id="grid"
+            className="grid grid-cols-2 border-b border-gray-300 pb-5"
+         >
             {/* GRID1 */}
-            <div id='grids' className='flex flex-col justify-center h-screen '>
-                <div className='ml-14 mr-5'>
-                    <h1 style={{ color: `black` }} className='text-7xl font-bold text-white mb-7'>Make bright ideas happen</h1>
-                    <h1 className='text-2xl text-gray-900 font-semibold mb-8'>Find the best freelancers to deliver your projects</h1>
-                    <div id='inputShadow' className='flex h-14 rounded-lg'>
-                        <div className='h-full w-14 bg-white text-gray-600 rounded-l flex justify-center items-center'><BsSearch /></div>
-                        <input className='h-full w-full focus:outline-none' />
-                        <button style={{ backgroundColor: `black` }} id='button' className='h-full px-5 rounded-r text-white '>
-                            Search
-                        </button>
-                    </div>
-                </div>
+            <div
+               id="grids"
+               className="flex flex-col justify-center items-end h-screen"
+            >
+               <div id="leftDiv">
+                  <h1
+                     id="colorChangeH1"
+                     style={{ color: `${data[slideIndex].color}` }}
+                     className="text-7xl font-black mb-7"
+                  >
+                     Make bright
+                     <br /> ideas happen
+                  </h1>
+                  <h1 className="text-3xl text-gray-900 font-semibold mb-12">
+                     Find the best freelancers to deliver your projects
+                  </h1>
+                  <div
+                     id="inputShadow"
+                     className="flex h-16 rounded-lg hover:shadow-2xl"
+                  >
+                     <div className="h-full w-14 bg-white text-gray-600 rounded-l flex justify-center items-center">
+                        <BsSearch />
+                     </div>
+                     <input
+                        placeholder={
+                           "Try " + `"${data[slideIndex].placeholder}"`
+                        }
+                        className="h-full w-full focus:outline-none"
+                     />
+                     <button
+                        style={{ backgroundColor: `${data[slideIndex].color}` }}
+                        id="button2"
+                        className="h-full px-5 rounded-r text-white "
+                     >
+                        Search
+                     </button>
+                  </div>
+                  <div className="flex w-auto h-10 mt-5 ml-1 items-center">
+                     <h1 className="mr-3 text-gray-400 text-sm">
+                        Popular skills:
+                     </h1>
+                     {data[slideIndex].skills.map((skills) => {
+                        return <Skills text={skills} />;
+                     })}
+                  </div>
+               </div>
             </div>
 
             {/* GRID2 */}
-            <div id='grids' className='h-screen grid2'>
-                <Swiper
-                    onSlideChange={() => console.log('hi')}
-                    slidesPerView={1}
-                    loop={true}
+            <Swiper
+               id="grids"
+               onAutoplay={changeColor}
+               loop={true}
+               autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+               }}
+               spaceBetween={30}
+               effect={"fade"}
+               fadeEffect={{
+                  crossFade: true,
+               }}
+               navigation={true}
+               pagination={{
+                  clickable: true,
+               }}
+            >
+               {data.map((slides) => {
+                  return (
+                     <SwiperSlide className="mt-3 pr-10">
+                        <img
+                           id="imgSlider"
+                           src={slides.image}
+                           style={{
+                              width: "100%",
+                              height: "90%",
+                              objectFit: "contain",
+                           }}
+                        />
+                     </SwiperSlide>
+                  );
+               })}
+            </Swiper>
+         </div>
+      </>
+   );
+};
 
-                    autoplay={{
-                        delay: 1000,
-                        disableOnInteraction: false
-                    }}
-                    spaceBetween={30}
-                    effect={'fade'}
-                    navigation={true}
-                    pagination={{
-                        "clickable": true
-                    }}
-                >
-                    {
-                        images.map(slides => {
-                            return <SwiperSlide><img id='imgSlider' src={slides.image} style={{ width: '100%', height: '100%' }} /></SwiperSlide>
-                        })
-                    }
-                </Swiper>
-            </div>
-        </div>
-    </>
-}
-
-export default Slider2
+export default Slider2;

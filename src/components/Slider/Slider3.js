@@ -1,5 +1,4 @@
 import { Carousel } from 'react-carousel-minimal';
-import '../../static/style/slider3.css'
 
 const Slider3 = props => {
     // const data = [
