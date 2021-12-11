@@ -48,7 +48,7 @@ const Slider2 = (props) => {
       },
       {
          image: "https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-3/hero-instance-3--desktop.webp",
-         color: "#e3c714",
+         color: "#d9b100",
          skills: [
             "wordpress",
             "php development",
@@ -59,7 +59,7 @@ const Slider2 = (props) => {
       },
       {
          image: "https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-5/hero-instance-5--desktop.webp",
-         color: "#e6b747",
+         color: "#91206b",
          skills: [
             "amazon store management",
             "cms development",
@@ -106,7 +106,7 @@ const Slider2 = (props) => {
                id="grids"
                className="flex flex-col justify-center items-end h-screen"
             >
-               <div id="leftDiv">
+               <div id="leftDiv" className="mt-10">
                   <h1
                      id="colorChangeH1"
                      style={{ color: `${data[slideIndex].color}` }}
