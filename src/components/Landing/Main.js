@@ -1,6 +1,7 @@
 import Slider from "../Slider/Slider"
 import Slider2 from "../Slider/Slider2"
 import Slider3 from "../Slider/Slider3"
+import Navbar from "../Navbar/Navbar"
 
 const Main = () => {
     const colors2 = [
@@ -18,8 +19,9 @@ const Main = () => {
     ]
 
     return <>
+        <Navbar />
         <Slider2 colors={colors2} />
-        <div className='flex justify-center items-center gap-14 mt-8'>
+        <div className='flex justify-center items-center gap-14 bg-gray-100'>
             <h1 className='text-lg font-semibold text-gray-400'>Trusted by:</h1>
             <img src='https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/facebook.31d5f92.png' alt='abc' />
             <img src='https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/google.517da09.png' alt='abc' />

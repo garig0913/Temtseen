@@ -25,7 +25,7 @@ SwiperCore.use([EffectFade, Navigation, Pagination, Autoplay]);
 const Slider2 = (props) => {
    WebFont.load({
       google: {
-         families: ["Nunito:n7"],
+         families: ["Nunito"],
       },
    });
    const data = [
@@ -99,14 +99,14 @@ const Slider2 = (props) => {
       <>
          <div
             id="grid"
-            className="grid grid-cols-2 border-b border-gray-300 pb-5 mt-5"
+            className="grid grid-cols-2 border-b border-gray-300 pb-5 pt-20 pb-12 bg-gray-100"
          >
             {/* GRID1 */}
             <div
                id="grids"
                className="flex flex-col justify-center items-end h-screen"
             >
-               <div id="leftDiv" className="mt-10">
+               <div id="leftDiv">
                   <h1
                      id="colorChangeH1"
                      style={{ color: `${data[slideIndex].color}` }}
@@ -120,9 +120,9 @@ const Slider2 = (props) => {
                   </h1>
                   <div
                      id="inputShadow"
-                     className="flex h-16 rounded-lg hover:shadow-2xl"
+                     className="flex h-16 rounded-md hover:shadow-2xl"
                   >
-                     <div className="h-full w-14 bg-white text-gray-600 rounded-l flex justify-center items-center">
+                     <div className="h-full w-14 bg-white text-gray-600 rounded-l-md flex justify-center items-center">
                         <BsSearch />
                      </div>
                      <input
@@ -134,12 +134,12 @@ const Slider2 = (props) => {
                      <button
                         style={{ backgroundColor: `${data[slideIndex].color}` }}
                         id="button2"
-                        className="h-full px-5 rounded-r text-white "
+                        className="h-full px-5 rounded-r-md text-white "
                      >
                         Search
                      </button>
                   </div>
-                  <div className="flex w-auto h-10 mt-5 ml-1 items-center">
+                  <div className="flex w-auto h-auto mt-5 ml-1 items-center">
                      <h1 className="mr-3 text-gray-400 text-sm">
                         Popular skills:
                      </h1>
