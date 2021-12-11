@@ -99,7 +99,7 @@ const Slider2 = (props) => {
       <>
          <div
             id="grid"
-            className="grid grid-cols-2 border-b border-gray-300 pb-5"
+            className="grid grid-cols-2 border-b border-gray-300 pb-5 mt-5"
          >
             {/* GRID1 */}
             <div
@@ -171,7 +171,7 @@ const Slider2 = (props) => {
             >
                {data.map((slides) => {
                   return (
-                     <SwiperSlide className="mt-3 pr-10">
+                     <SwiperSlide className="mt-4 pr-10">
                         <img
                            id="imgSlider"
                            src={slides.image}
