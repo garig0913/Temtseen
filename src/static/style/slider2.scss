@@ -1,36 +1,39 @@
 #grid {
-   grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1fr 1.4fr;
 }
 
 #grids {
-   max-height: 680px;
+  max-height: 680px;
 }
 
 #slider {
-   height: 650px;
-   background-position: center center;
-   background-size: center;
+  height: 650px;
+  background-position: center center;
+  background-size: center;
 }
 
 #inputShadow {
-   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 #button2 {
-   transition: 600ms;
+  transition: 600ms;
 }
 
 #colorChangeH1 {
-   transition: 600ms;
-   text-shadow: 0px 1px 1px #3f3f3f;
-   font-family: "Nunito", sans-serif;
+  transition: 600ms;
+  text-shadow: 0px 1px 1px #3f3f3f;
+  font-family: "Nunito", sans-serif;
 }
 
 #swiper {
-   width: 100px;
+  width: 100px;
 }
 
 #leftDiv {
-   width: 89%;
+  width: 89%;
+}
+
+#transitionBtn {
+  transition: 100ms;
 }
