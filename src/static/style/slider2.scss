@@ -1,3 +1,6 @@
+$blue-scheme: #14365d;
+$gold-scheme: #d85c27;
+
 #grid {
   grid-template-columns: 1fr 1.4fr;
 }
@@ -36,4 +39,29 @@
 
 #transitionBtn {
   transition: 100ms;
+}
+
+.navbarText {
+  color: #445751;
+}
+
+.navbarText.navbarActive {
+  color: white;
+}
+.navbarBgBlue {
+  background-color: $blue-scheme;
+}
+
+.fiverrTextInactive {
+  color: #46344e;
+}
+
+.fiverrTextActive {
+  color: #d85c27;
+}
+
+.joinActive {
+  :hover {
+    background-color: $gold-scheme;
+  }
 }
