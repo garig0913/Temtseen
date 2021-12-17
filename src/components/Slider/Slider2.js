@@ -99,7 +99,7 @@ const Slider2 = (props) => {
       <>
          <div
             id="grid"
-            className="grid grid-cols-2 border-b border-gray-300 pb-5 pt-20 pb-12 bg-gray-100"
+            className="grid grid-cols-2 border-b border-gray-300 pb-5 pt-20 pb-12 bg-gray-50"
          >
             {/* GRID1 */}
             <div
@@ -173,6 +173,7 @@ const Slider2 = (props) => {
                   return (
                      <SwiperSlide className="mt-4 pr-10">
                         <img
+                           alt='abc'
                            id="imgSlider"
                            src={slides.image}
                            style={{
