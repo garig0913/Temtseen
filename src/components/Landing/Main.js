@@ -5,8 +5,8 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
 const Main = () => {
-  const colors2 = ["#1e0946", "#f68f84", "#e3c714", "#e6b747", "#e0221b", "#c23707"];
   const colors = ["#387aaa", "#fe9d96", "#394f64"];
+  const colors2 = ["#1e0946", "#f68f84", "#e3c714", "#e6b747", "#e0221b", "#c23707"];
 
   return (
     <>
