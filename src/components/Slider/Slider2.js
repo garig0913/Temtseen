@@ -10,6 +10,7 @@ import "swiper/swiper.min.css";
 import "swiper/modules/pagination/pagination.min.css";
 import "swiper/modules/effect-fade/effect-fade.min.css";
 import "./styles.css";
+import { useMediaQuery } from "react-responsive";
 
 import Skills from "../Buttons/Skills";
 
@@ -28,6 +29,17 @@ const Slider2 = (props) => {
          families: ["Nunito"],
       },
    });
+
+   const Desktop = ({ children }) => {
+      const isDesktop = useMediaQuery({ minWidth: 1010 });
+      return isDesktop ? children : null;
+   };
+
+   const NonDesktop = ({ children }) => {
+      const isNotDesktop = useMediaQuery({ maxWidth: 1009 });
+      return isNotDesktop ? children : null;
+   };
+
    const data = [
       {
          image: "https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-1/hero-instance-1--desktop.webp",
@@ -97,96 +109,100 @@ const Slider2 = (props) => {
 
    return (
       <>
-         <div
-            id="grid"
-            className="grid grid-cols-2 border-b border-gray-300 pb-5 pt-20 bg-gray-50"
-         >
-            {/* GRID1 */}
+         <Desktop>
             <div
-               id="grids"
-               className="flex flex-col justify-center items-end h-screen"
+               id="grid"
+               className="grid grid-cols-2 border-b border-gray-300 pb-5 pt-20 bg-gray-50"
             >
-               <div id="leftDiv">
-                  <h1
-                     id="colorChangeH1"
-                     style={{ color: `${data[slideIndex].color}` }}
-                     className="text-7xl font-black mb-7"
-                  >
-                     Make bright
-                     <br /> ideas happen
-                  </h1>
-                  <h1 className="text-3xl text-gray-900 font-semibold mb-12">
-                     Find the best freelancers to deliver your projects
-                  </h1>
-                  <div
-                     id="inputShadow"
-                     className="flex h-16 rounded-md hover:shadow-2xl"
-                  >
-                     <div className="h-full w-14 bg-white text-gray-600 rounded-l-md flex justify-center items-center">
-                        <BsSearch />
-                     </div>
-                     <input
-                        placeholder={
-                           "Try " + `"${data[slideIndex].placeholder}"`
-                        }
-                        className="h-full w-full focus:outline-none"
-                     />
-                     <button
-                        style={{ backgroundColor: `${data[slideIndex].color}` }}
-                        id="button2"
-                        className="h-full px-5 rounded-r-md text-white "
+               {/* grid1 */}
+               <div
+                  id="grids"
+                  className="flex flex-col justify-center items-end h-screen"
+               >
+                  <div id="leftDiv">
+                     <h1
+                        id="colorChangeH1"
+                        style={{ color: `${data[slideIndex].color}` }}
+                        className="text-7xl font-black mb-7"
                      >
-                        Search
-                     </button>
-                  </div>
-                  <div className="flex w-auto h-auto mt-5 ml-1 items-center">
-                     <h1 className="mr-3 text-gray-400 text-sm">
-                        Popular skills:
+                        Make bright
+                        <br /> ideas happen
                      </h1>
-                     {data[slideIndex].skills.map((skills) => {
-                        return <Skills text={skills} />;
-                     })}
+                     <h1 className="text-3xl text-gray-900 font-semibold mb-12">
+                        Find the best freelancers to deliver your projects
+                     </h1>
+                     <div
+                        id="inputShadow"
+                        className="flex h-16 rounded-md hover:shadow-2xl"
+                     >
+                        <div className="h-full w-14 bg-white text-gray-600 rounded-l-md flex justify-center items-center">
+                           <BsSearch />
+                        </div>
+                        <input
+                           placeholder={
+                              "Try " + `"${data[slideIndex].placeholder}"`
+                           }
+                           className="h-full w-full focus:outline-none"
+                        />
+                        <button
+                           style={{
+                              backgroundColor: `${data[slideIndex].color}`,
+                           }}
+                           id="button2"
+                           className="h-full px-5 rounded-r-md text-white "
+                        >
+                           Search
+                        </button>
+                     </div>
+                     <div className="flex w-auto h-auto mt-5 ml-1 items-center">
+                        <h1 className="mr-3 text-gray-400 text-sm">
+                           Popular skills:
+                        </h1>
+                        {data[slideIndex].skills.map((skills) => {
+                           return <Skills text={skills} />;
+                        })}
+                     </div>
                   </div>
                </div>
-            </div>
 
-            {/* GRID2 */}
-            <Swiper
-               id="grids"
-               onAutoplay={changeColor}
-               loop={true}
-               autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-               }}
-               spaceBetween={30}
-               effect={"fade"}
-               fadeEffect={{
-                  crossFade: true,
-               }}
-               navigation={true}
-               pagination={{
-                  clickable: true,
-               }}
-            >
-               {data.map((slides) => {
-                  return (
-                     <SwiperSlide className="mt-4 pr-10">
-                        <img
-                           alt="abc"
-                           id="imgSlider"
-                           src={slides.image}
-                           style={{
-                              width: "100%",
-                              height: "90%",
-                              objectFit: "contain",
-                           }}
-                        />
-                     </SwiperSlide>
-                  );
-               })}
-            </Swiper>
-         </div>
+               {/* GRID2 */}
+               <Swiper
+                  id="grids"
+                  onAutoplay={() => console.log("hello")}
+                  loop={true}
+                  autoplay={{
+                     delay: 3000,
+                     disableOnInteraction: false,
+                  }}
+                  spaceBetween={30}
+                  effect={"fade"}
+                  fadeEffect={{
+                     crossFade: true,
+                  }}
+                  navigation={true}
+                  pagination={{
+                     clickable: true,
+                  }}
+               >
+                  {data.map((slides) => {
+                     return (
+                        <SwiperSlide className="mt-4 pr-10">
+                           <img
+                              alt="abc"
+                              id="imgSlider"
+                              src={slides.image}
+                              style={{
+                                 width: "100%",
+                                 height: "90%",
+                                 objectFit: "contain",
+                              }}
+                           />
+                        </SwiperSlide>
+                     );
+                  })}
+               </Swiper>
+            </div>
+         </Desktop>
       </>
    );
 };
