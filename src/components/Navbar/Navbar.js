@@ -1,8 +1,10 @@
 import { useState } from "react";
 import WebFont from "webfontloader";
 import { VscThreeBars } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
+<<<<<<< Updated upstream
   WebFont.load({
     google: {
       families: ["Anton"],
@@ -101,6 +103,76 @@ const Navbar = (props) => {
               navbar
                 ? "flex items-center gap-7 mr-20 navbarText navbarActive"
                 : "flex items-center gap-7 mr-20 navbarText"
+=======
+   WebFont.load({
+      google: {
+         families: ["Anton"],
+      },
+   });
+
+   const [navbar, setNavbar] = useState(false);
+   const [flipIsHidden, setFliphidden] = useState(false);
+   const [flip, setFlip] = useState(false);
+   const [navBarHidden, setNavbarHidden] = useState(false);
+
+   let pagePosition = Math.floor(window.scrollY);
+   let distanceScrolled = 0;
+
+   const changeBg = () => {
+      if (window.scrollY > 10) {
+         setNavbar(true);
+      } else {
+         setNavbar(false);
+      }
+   };
+
+   const flipHidden = () => {
+      if (window.scrollY > 100) {
+         setFliphidden(true);
+      } else {
+         setFliphidden(false);
+      }
+   };
+
+   const flipAnimation = () => {
+      if (window.scrollY > 101) {
+         setFlip(true);
+      } else {
+         setFlip(false);
+      }
+   };
+
+   const hideOnUp = () => {
+      if (distanceScrolled >= 110) {
+         setNavbarHidden(true);
+         distanceScrolled = 0;
+      }
+      if (Math.floor(window.scrollY) >= pagePosition) {
+         pagePosition = Math.floor(window.scrollY);
+         setNavbarHidden(false);
+         distanceScrolled = 0;
+      } else {
+         distanceScrolled++;
+      }
+   };
+
+   const navbarEvents = () => {
+      changeBg();
+      flipHidden();
+      flipAnimation();
+      hideOnUp();
+   };
+
+   window.addEventListener("scroll", navbarEvents);
+
+   return (
+      <>
+         <div
+            style={
+               navBarHidden
+                  ? { transform: "translateY(-101%)", transition: "250ms" }
+                  : null
+>>>>>>> Stashed changes
             }
             style={{
               fontSize: "1.12rem",
@@ -131,6 +203,7 @@ const Navbar = (props) => {
                   : "joinInactive px-6 border border-gray-500 rounded mt-1 hover:text-gray-100 hover:bg-green-500 hover:border-gray-700"
               }
             >
+<<<<<<< Updated upstream
               Join
             </button>
           </div>
@@ -151,6 +224,66 @@ const Navbar = (props) => {
                 <li>Lifestyle</li>
                 <li className="mr-20">Trending</li>
               </ul>
+=======
+               <div className="flex items-end ml-6 lg:ml-16">
+                  <VscThreeBars className="text-3xl text-green-900 mb-0.5 lg:hidden opacity-80 font-bold" />
+                  <Link to={"/Product"}>
+                     <a>
+                        <h1
+                           className={
+                              navbar
+                                 ? "text-4xl ml-3 fiverrTextActive font-extrabold"
+                                 : "text-4xl ml-3 fiverrTextInactive font-extrabold"
+                           }
+                           style={{
+                              font: "Macan, Helvetica Neue, Helvetica, Arial, sans-serif",
+                              letterSpacing: "-2px",
+                           }}
+                        >
+                           fiverr<span className="text-green-400">.</span>
+                        </h1>
+                     </a>
+                  </Link>
+               </div>
+               <div
+                  className={
+                     navbar
+                        ? "flex items-center gap-7 mr-20 navbarText navbarActive"
+                        : "flex items-center gap-7 mr-20 navbarText"
+                  }
+                  style={{
+                     fontSize: "1.12rem",
+                     transition: "250ms",
+                  }}
+               >
+                  <button id="transitionBtn" className="hover:text-green-500">
+                     Fiverr Business
+                  </button>
+                  <button id="transitionBtn" className="hover:text-green-500">
+                     Explore
+                  </button>
+                  <button id="transitionBtn" className="hover:text-green-500">
+                     Become a seller
+                  </button>
+                  <button id="transitionBtn" className="hover:text-green-500">
+                     Become a seller
+                  </button>
+                  <button id="transitionBtn" className="hover:text-green-500">
+                     Sign in
+                  </button>
+                  <button
+                     id="transitionBtn"
+                     style={{ transition: "190ms" }}
+                     className={
+                        navbar
+                           ? "joinActive px-6 border border-gray-500 rounded mt-1 hover:bg-green-500 hover:text-gray-100 hover:border-gray-300"
+                           : "joinInactive px-6 border border-gray-500 rounded mt-1 hover:text-gray-100 hover:bg-green-500 hover:border-gray-700"
+                     }
+                  >
+                     Join
+                  </button>
+               </div>
+>>>>>>> Stashed changes
             </div>
             <div className="flip-card-back">
               <h1>John Doe</h1>
