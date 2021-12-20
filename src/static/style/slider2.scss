@@ -2,66 +2,67 @@ $blue-scheme: #14365d;
 $gold-scheme: #d85c27;
 
 #grid {
-  grid-template-columns: 1fr 1.4fr;
+   grid-template-columns: 1fr 1.35fr;
 }
 
 #grids {
-  max-height: 680px;
+   max-height: 680px;
 }
 
 #slider {
-  height: 650px;
-  background-position: center center;
-  background-size: center;
+   height: 650px;
+   background-position: center center;
+   background-size: center;
 }
 
 #inputShadow {
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 #button2 {
-  transition: 600ms;
+   transition: 500ms;
 }
 
 #colorChangeH1 {
-  transition: 600ms;
-  text-shadow: 0px 1px 1px #3f3f3f;
-  font-family: "Nunito", sans-serif;
+   transition: 500ms;
+   text-shadow: 0px 1px 1px #3f3f3f;
+   font-family: "Nunito", sans-serif;
 }
 
 #swiper {
-  width: 100px;
+   width: 100px;
 }
 
 #leftDiv {
-  width: 89%;
+   width: 89%;
 }
 
 #transitionBtn {
-  transition: 100ms;
+   transition: 100ms;
 }
 
 .navbarText {
-  color: #445751;
+   color: #445751;
 }
 
 .navbarText.navbarActive {
-  color: white;
+   color: white;
 }
 .navbarBgBlue {
-  background-color: $blue-scheme;
+   background-color: $blue-scheme;
 }
 
 .fiverrTextInactive {
-  color: #46344e;
+   color: #46344e;
 }
 
 .fiverrTextActive {
-  color: #d85c27;
+   color: #d85c27;
 }
 
 .joinActive {
-  :hover {
-    background-color: $gold-scheme;
-  }
+   :hover {
+      background-color: $gold-scheme;
+   }
 }

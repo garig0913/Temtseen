@@ -1,5 +1,6 @@
 import { useState } from "react";
 import WebFont from "webfontloader";
+import { BsSearch } from "react-icons/bs";
 import { VscThreeBars } from "react-icons/vsc";
 
 const Navbar = (props) => {
@@ -13,6 +14,8 @@ const Navbar = (props) => {
    const [flipIsHidden, setFliphidden] = useState(false);
    const [flip, setFlip] = useState(false);
    const [navBarHidden, setNavbarHidden] = useState(false);
+   const [topSearch, setTopSearch] = useState(false);
+   const [topSearchOpacity, setTopSearchOpacity] = useState(false);
 
    let pagePosition = Math.floor(window.scrollY);
    let distanceScrolled = 0;
@@ -42,6 +45,10 @@ const Navbar = (props) => {
    };
 
    const hideOnUp = () => {
+      if (window.scrollY < 40) {
+         setNavbarHidden(false);
+         distanceScrolled = 0;
+      }
       if (distanceScrolled >= 90) {
          setNavbarHidden(true);
          distanceScrolled = 0;
@@ -49,9 +56,19 @@ const Navbar = (props) => {
       if (Math.floor(window.scrollY) >= pagePosition) {
          pagePosition = Math.floor(window.scrollY);
          setNavbarHidden(false);
+         distanceScrolled = 0;
       } else {
          distanceScrolled++;
       }
+   };
+
+   const topSearchHidden = () => {
+      if (window.scrollY > 325) {
+         setTopSearch(true);
+      } else setTopSearch(false);
+      if (window.scrollY > 330) {
+         setTopSearchOpacity(true);
+      } else setTopSearchOpacity(false);
    };
 
    const navbarEvents = () => {
@@ -59,6 +76,7 @@ const Navbar = (props) => {
       flipHidden();
       flipAnimation();
       hideOnUp();
+      topSearchHidden();
    };
 
    window.addEventListener("scroll", navbarEvents);
@@ -73,7 +91,6 @@ const Navbar = (props) => {
             }
             className="flex-col fixed w-full z-30 flex"
          >
-            {/* TOPNAVBAR */}
             <div
                style={{
                   transition: "350ms",
@@ -87,6 +104,7 @@ const Navbar = (props) => {
                <div className="flex items-end ml-6 lg:ml-16">
                   <VscThreeBars className="text-3xl text-green-900 mb-0.5 lg:hidden opacity-80 font-bold" />
                   <h1
+                     id="logo"
                      className={
                         navbar
                            ? "text-4xl ml-3 fiverrTextActive font-extrabold"
@@ -99,6 +117,30 @@ const Navbar = (props) => {
                   >
                      fiverr<span className="text-green-400">.</span>
                   </h1>
+
+                  <div
+                     id="inputShadow"
+                     style={{
+                        opacity: `${topSearchOpacity ? "1" : "0"}`,
+                        transition: "280ms",
+                     }}
+                     className={
+                        topSearch
+                           ? "flex h-8 rounded-sm hover:shadow-2xl ml-10"
+                           : "hidden"
+                     }
+                  >
+                     <div className="h-8 w-14 bg-white text-gray-600 rounded-l-sm flex justify-center items-center">
+                        <BsSearch />
+                     </div>
+                     <input className="h-full w-full focus:outline-none" />
+                     <button
+                        id="button2"
+                        className="h-full px-4 rounded-r-sm text-white "
+                     >
+                        Search
+                     </button>
+                  </div>
                </div>
                <div
                   className={
@@ -154,15 +196,44 @@ const Navbar = (props) => {
                >
                   <div className="flip-card-front">
                      <ul className="text-base flex justify-evenly items-center text-gray-200 font-normal mt-0.5">
-                        <li className="ml-20">Graphics & design</li>
-                        <li>Digital Marketing</li>
-                        <li>Writing & Translation</li>
-                        <li>Video & Animation</li>
-                        <li>Music & Audio</li>
-                        <li>Programming & Tech</li>
-                        <li>Business</li>
-                        <li>Lifestyle</li>
-                        <li className="mr-20">Trending</li>
+                        <div>
+                           <li className="ml-20 navItemBottom">
+                              Graphics & design
+                           </li>
+                           <div></div>
+                        </div>
+                        <div>
+                           <li>Digital Marketing</li>
+                           <div></div>
+                        </div>
+                        <div>
+                           <li>Writing & Translation</li>
+                           <div></div>
+                        </div>
+                        <div>
+                           <li>Video & Animation</li>
+                           <div></div>
+                        </div>
+                        <div>
+                           <li>Music & Audio</li>
+                           <div></div>
+                        </div>
+                        <div>
+                           <li>Programming & Tech</li>
+                           <div></div>
+                        </div>
+                        <div>
+                           <li>Business</li>
+                           <div></div>
+                        </div>
+                        <div>
+                           <li>Lifestyle</li>
+                           <div></div>
+                        </div>
+                        <div>
+                           <li className="mr-20">Trending</li>
+                           <div></div>
+                        </div>
                      </ul>
                   </div>
                   <div className="flip-card-back">
@@ -180,7 +251,6 @@ const Navbar = (props) => {
                      display: hidden;
                      transform: rotateX(180deg);
                   }
-
                   .flip-card-inner {
                      position: relative;
                      width: 100%;
@@ -190,11 +260,9 @@ const Navbar = (props) => {
                      transform-style: flat;
                      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
                   }
-
                   .flip-card:hover .flip-card-inner {
                      transform: rotateX(180deg);
                   }
-
                   .flip-card-front,
                   .flip-card-back {
                      position: absolute;
@@ -203,15 +271,20 @@ const Navbar = (props) => {
                      -webkit-backface-visibility: hidden;
                      backface-visibility: hidden;
                   }
-
                   .flip-card-front {
                      background-color: #14365d;
                      color: black;
                   }
-
                   .flip-card-back {
                      color: white;
                      transform: rotateY(180deg);
+                  }
+                  #button2 {
+                     background-color: #d85c27;
+                     transition: 150ms;
+                  }
+                  #button2:hover {
+                     background-color: #fc7814;
                   }
                `}
             </style>

@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Partners from "../components/Cards/Partners";
 import { useMediaQuery } from "react-responsive";
+import InfoVideo from "../components/Infos/Video";
+import Reviews from "../components/Infos/Reviews";
 
 import CardSlider2 from "../components/Slider/CardSlider2";
 
@@ -40,19 +42,41 @@ const Main = () => {
 
    return (
       <>
-         <Navbar />
-         <HeaderSlider colors={colors2} />
+         <Desktop>
+            <Navbar />
+            <HeaderSlider colors={colors2} />
 
-         <main style={{ width: "88%" }} className="mx-auto h-auto">
-            <Partners />
-            <div className="w-full h-auto mt-20">
-               <h1 className="lg:text-4xl md:text-3xl sm:text-3xl xs:text-3xl mb-6 font-medium text-gray-700">
-                  Popular professional services
-               </h1>
-               <CardSlider2 />
-            </div>
-         </main>
-         <Footer />
+            <main style={{ width: "88%" }} className="mx-auto h-auto">
+               <Partners />
+               <div className="w-full h-auto mt-24">
+                  <h1 className="lg:text-4xl md:text-3xl sm:text-3xl xs:text-3xl mb-6 font-medium text-gray-700">
+                     Popular professional services
+                  </h1>
+                  <CardSlider2 />
+               </div>
+               <InfoVideo />
+               <Reviews />
+            </main>
+            <Footer />
+         </Desktop>
+
+         <Portrait>
+            <Navbar />
+            <HeaderSlider colors={colors2} />
+
+            <main style={{ width: "100vw" }} className="h-auto">
+               <Partners />
+               <div className="w-full h-auto mt-24">
+                  <h1 className="lg:text-4xl md:text-3xl sm:text-3xl xs:text-3xl mb-6 font-medium text-gray-700">
+                     Popular professional services
+                  </h1>
+                  <CardSlider2 />
+               </div>
+               <InfoVideo />
+               <Reviews />
+            </main>
+            <Footer />
+         </Portrait>
       </>
    );
 };

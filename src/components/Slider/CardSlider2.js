@@ -75,7 +75,6 @@ const SimpleSlider = () => {
                slidesToShow: 5,
                slidesToScroll: 5,
                infinite: true,
-               dots: true,
             },
          },
          {
@@ -84,7 +83,6 @@ const SimpleSlider = () => {
                slidesToShow: 4,
                slidesToScroll: 5,
                infinite: true,
-               dots: true,
             },
          },
          {
@@ -93,7 +91,6 @@ const SimpleSlider = () => {
                slidesToShow: 3,
                slidesToScroll: 3,
                infinite: true,
-               dots: true,
             },
          },
          {
