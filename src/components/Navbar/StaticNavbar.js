@@ -1,113 +1,30 @@
-import { useState } from "react";
 import WebFont from "webfontloader";
 import { BsSearch } from "react-icons/bs";
 import { VscThreeBars } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
-const Navbar = (props) => {
+const Navbar = () => {
   WebFont.load({
     google: {
       families: ["Anton"],
     },
   });
 
-  const [navbar, setNavbar] = useState(false);
-  const [flipIsHidden, setFliphidden] = useState(false);
-  const [flip, setFlip] = useState(false);
-  const [navBarHidden, setNavbarHidden] = useState(false);
-  const [topSearch, setTopSearch] = useState(false);
-  const [topSearchOpacity, setTopSearchOpacity] = useState(false);
-
-  let pagePosition = Math.floor(window.scrollY);
-  let distanceScrolled = 0;
-
-  const changeBg = () => {
-    if (window.scrollY > 10) {
-      setNavbar(true);
-    } else {
-      setNavbar(false);
-    }
-  };
-
-  const flipHidden = () => {
-    if (window.scrollY > 100) {
-      setFliphidden(true);
-    } else {
-      setFliphidden(false);
-    }
-  };
-
-  const flipAnimation = () => {
-    if (window.scrollY > 101) {
-      setFlip(true);
-    } else {
-      setFlip(false);
-    }
-  };
-
-  const hideOnUp = () => {
-    if (window.scrollY < 40) {
-      setNavbarHidden(false);
-      distanceScrolled = 0;
-    }
-    if (distanceScrolled >= 35) {
-      setNavbarHidden(true);
-      distanceScrolled = 0;
-    }
-    if (Math.floor(window.scrollY) >= pagePosition) {
-      pagePosition = Math.floor(window.scrollY);
-      setNavbarHidden(false);
-      distanceScrolled = 0;
-    } else {
-      distanceScrolled++;
-    }
-  };
-
-  const topSearchHidden = () => {
-    if (window.scrollY > 325) {
-      setTopSearch(true);
-    } else setTopSearch(false);
-    if (window.scrollY > 330) {
-      setTopSearchOpacity(true);
-    } else setTopSearchOpacity(false);
-  };
-
-  const navbarEvents = () => {
-    changeBg();
-    flipHidden();
-    flipAnimation();
-    hideOnUp();
-    topSearchHidden();
-  };
-
-  window.addEventListener("scroll", navbarEvents);
-
   return (
     <>
-      <div
-        style={navBarHidden ? { transform: "translateY(-101%)", transition: "250ms" } : null}
-        className="flex-col fixed w-full z-30 flex"
-      >
+      <div className="flex-col w-full z-30 flex">
         <div
           style={{
             transition: "350ms",
           }}
-          className={
-            navbar
-              ? "w-full flex justify-between items-center py-5 navbarBgBlue border-b border-gray-500"
-              : "w-full flex justify-between items-center py-5 bg-transparent"
-          }
+          className="w-full flex justify-between items-center py-5 navbarBgBlue border-b border-gray-500"
         >
           <div className="flex items-end ml-6 lg:ml-16">
             <VscThreeBars className="text-3xl text-green-900 mb-0.5 lg:hidden opacity-80 font-bold" />
             <Link to={"/"}>
               <h1
                 id="logo"
-                className={
-                  navbar
-                    ? "text-4xl ml-3 fiverrTextActive font-extrabold"
-                    : "text-4xl ml-3 fiverrTextInactive font-extrabold"
-                }
+                className="text-4xl ml-3 fiverrTextActive font-extrabold"
                 style={{
                   font: "Macan, Helvetica Neue, Helvetica, Arial, sans-serif",
                   letterSpacing: "-2px",
@@ -120,10 +37,10 @@ const Navbar = (props) => {
             <div
               id="inputShadow"
               style={{
-                opacity: `${topSearchOpacity ? "1" : "0"}`,
+                opacity: "1",
                 transition: "280ms",
               }}
-              className={topSearch ? "mb-px flex h-8 rounded-sm hover:shadow-2xl ml-10" : "hidden"}
+              className="flex h-8 rounded-sm hover:shadow-2xl ml-10"
             >
               <div className="h-8 w-14 bg-white text-gray-600 rounded-l-sm flex justify-center items-center">
                 <BsSearch />
@@ -135,24 +52,15 @@ const Navbar = (props) => {
             </div>
           </div>
           <div
-            className={
-              navbar
-                ? "flex items-center gap-7 mr-20 navbarText navbarActive"
-                : "flex items-center gap-7 mr-20 navbarText"
-            }
+            className="flex items-center gap-7 mr-20 navbarText navbarActive"
             style={{
               fontSize: "1.12rem",
               transition: "250ms",
             }}
           >
-            <Link to={"category"}>
-              <button
-                id="transitionBtn"
-                className="py-1 px-3.5 mt-px text-white postProject rounded-sm"
-              >
-                Post project
-              </button>
-            </Link>
+            <button id="transitionBtn" className="hover:text-green-500">
+              Fiverr Business
+            </button>
             <button id="transitionBtn" className="hover:text-green-500">
               Explore
             </button>
@@ -168,11 +76,7 @@ const Navbar = (props) => {
             <button
               id="transitionBtn"
               style={{ transition: "190ms" }}
-              className={
-                navbar
-                  ? "joinActive px-6 border border-gray-500 rounded mt-1 hover:bg-green-500 hover:text-gray-100 hover:border-gray-300"
-                  : "joinInactive px-6 border border-gray-500 rounded mt-1 hover:text-gray-100 hover:bg-green-500 hover:border-gray-700"
-              }
+              className="joinActive px-6 border border-gray-500 rounded mt-1 hover:bg-green-500 hover:text-gray-100 hover:border-gray-300"
             >
               Join
             </button>
@@ -180,8 +84,8 @@ const Navbar = (props) => {
         </div>
 
         {/* LOWERNAVBAR */}
-        <div className={flipIsHidden ? "flip-card w-full h-8 flex" : "flip-card w-full h-8 hidden"}>
-          <div className="flip-card-inner" style={flip ? { transform: "rotateX(180deg)" } : null}>
+        <div className="flip-card w-full h-8 flex">
+          <div className="flip-card-inner" style={{ transform: "rotateX(180deg)" }}>
             <div className="flip-card-front">
               <ul className="text-base flex justify-evenly items-center text-gray-200 font-normal mt-0.5">
                 <div>
@@ -271,15 +175,6 @@ const Navbar = (props) => {
             }
             #button2:hover {
               background-color: #fc7814;
-            }
-            .postProject {
-              background-color: #d85c27;
-              border: 1px solid #d85c27;
-              transition: 300ms !important;
-            }
-            .postProject:hover {
-              background-color: white;
-              color: #d85c27;
             }
           `}
         </style>

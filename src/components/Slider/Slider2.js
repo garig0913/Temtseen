@@ -95,7 +95,7 @@ const Slider2 = (props) => {
 
   return (
     <>
-      <div id="grid" className="grid grid-cols-2 border-b border-gray-300 pb-5 pt-16 bg-gray-50">
+      <div id="grid" className="grid grid-cols-2 border-b border-gray-300 pb-10 pt-16 bg-gray-50">
         {/* grid1 */}
         <div id="grids" className="flex flex-col justify-center items-end h-screen">
           <div id="leftDiv">
