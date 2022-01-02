@@ -49,17 +49,18 @@ const Navbar = (props) => {
          setNavbarHidden(false);
          distanceScrolled = 0;
       }
-      if (distanceScrolled >= 90) {
+      if (distanceScrolled >= 30) {
          setNavbarHidden(true);
          distanceScrolled = 0;
       }
-      if (Math.floor(window.scrollY) >= pagePosition) {
-         pagePosition = Math.floor(window.scrollY);
+      if (window.scrollY >= pagePosition) {
+         pagePosition = window.scrollY;
          setNavbarHidden(false);
          distanceScrolled = 0;
       } else {
          distanceScrolled++;
       }
+      console.log(distanceScrolled);
    };
 
    const topSearchHidden = () => {

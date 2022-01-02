@@ -15,7 +15,7 @@ const index = (props) => {
       return isDesktop ? children : null;
    };
    const Tablet = ({ children }) => {
-      const isMobile = useMediaQuery({ minWidth: 901 });
+      const isMobile = useMediaQuery({ minWidth: 900, maxWidth: 1160 });
       return isMobile ? children : null;
    };
    const Mobile = ({ children }) => {
