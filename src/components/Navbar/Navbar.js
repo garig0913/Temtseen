@@ -2,6 +2,7 @@ import { useState } from "react";
 import WebFont from "webfontloader";
 import { BsSearch } from "react-icons/bs";
 import { VscThreeBars } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
    WebFont.load({
@@ -62,6 +63,23 @@ const Navbar = (props) => {
       }
       console.log(distanceScrolled);
    };
+   const hideOnUp = () => {
+      if (window.scrollY < 40) {
+         setNavbarHidden(false);
+         distanceScrolled = 0;
+      }
+      if (distanceScrolled >= 35) {
+         setNavbarHidden(true);
+         distanceScrolled = 0;
+      }
+      if (Math.floor(window.scrollY) >= pagePosition) {
+         pagePosition = Math.floor(window.scrollY);
+         setNavbarHidden(false);
+         distanceScrolled = 0;
+      } else {
+         distanceScrolled++;
+      }
+   };
 
    const topSearchHidden = () => {
       if (window.scrollY > 325) {
@@ -104,20 +122,22 @@ const Navbar = (props) => {
             >
                <div className="flex items-end ml-6 lg:ml-16">
                   <VscThreeBars className="text-3xl text-green-900 mb-0.5 lg:hidden opacity-80 font-bold" />
-                  <h1
-                     id="logo"
-                     className={
-                        navbar
-                           ? "text-4xl ml-3 fiverrTextActive font-extrabold"
-                           : "text-4xl ml-3 fiverrTextInactive font-extrabold"
-                     }
-                     style={{
-                        font: "Macan, Helvetica Neue, Helvetica, Arial, sans-serif",
-                        letterSpacing: "-2px",
-                     }}
-                  >
-                     fiverr<span className="text-green-400">.</span>
-                  </h1>
+                  <Link to={"/"}>
+                     <h1
+                        id="logo"
+                        className={
+                           navbar
+                              ? "text-4xl ml-3 fiverrTextActive font-extrabold"
+                              : "text-4xl ml-3 fiverrTextInactive font-extrabold"
+                        }
+                        style={{
+                           font: "Macan, Helvetica Neue, Helvetica, Arial, sans-serif",
+                           letterSpacing: "-2px",
+                        }}
+                     >
+                        fiverr<span className="text-green-400">.</span>
+                     </h1>
+                  </Link>
 
                   <div
                      id="inputShadow"
@@ -127,7 +147,7 @@ const Navbar = (props) => {
                      }}
                      className={
                         topSearch
-                           ? "flex h-8 rounded-sm hover:shadow-2xl ml-10"
+                           ? "mb-px flex h-8 rounded-sm hover:shadow-2xl ml-10"
                            : "hidden"
                      }
                   >
@@ -154,9 +174,14 @@ const Navbar = (props) => {
                      transition: "250ms",
                   }}
                >
-                  <button id="transitionBtn" className="hover:text-green-500">
-                     Fiverr Business
-                  </button>
+                  <Link to={"category"}>
+                     <button
+                        id="transitionBtn"
+                        className="py-1 px-3.5 mt-px text-white postProject rounded-sm"
+                     >
+                        Post project
+                     </button>
+                  </Link>
                   <button id="transitionBtn" className="hover:text-green-500">
                      Explore
                   </button>
@@ -286,6 +311,15 @@ const Navbar = (props) => {
                   }
                   #button2:hover {
                      background-color: #fc7814;
+                  }
+                  .postProject {
+                     background-color: #d85c27;
+                     border: 1px solid #d85c27;
+                     transition: 300ms !important;
+                  }
+                  .postProject:hover {
+                     background-color: white;
+                     color: #d85c27;
                   }
                `}
             </style>
