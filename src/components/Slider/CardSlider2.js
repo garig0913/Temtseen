@@ -5,8 +5,18 @@ import "slick-carousel/slick/slick-theme.css";
 import Next from "../Buttons/SliderArrowNext";
 import Prev from "../Buttons/SliderArrowPrev";
 import Card from "../Cards/CategoryCards";
+import { useMediaQuery } from "react-responsive";
 
 const SimpleSlider = () => {
+  const Desktop = ({ children }) => {
+    const isDesktop = useMediaQuery({ minWidth: 1010 });
+    return isDesktop ? children : null;
+  };
+
+  const Portrait = ({ children }) => {
+    const Portrait = useMediaQuery({ orientation: "portrait" });
+    return Portrait ? children : null;
+  };
   let data = [
     {
       image:
