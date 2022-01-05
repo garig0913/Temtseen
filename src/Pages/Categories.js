@@ -3,10 +3,26 @@ import WebFont from "webfontloader";
 import Navbar from "../components/Navbar/StaticNavbar";
 import Sidebar from "../components/Sidebar/Options";
 import Card from "../components/Cards/JobCards";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 const Index = () => {
+  const [categoryName, setName] = useState("");
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Poppins", "Chakra Petch"],
+      },
+    });
+    window.scrollTo(0, 0);
+    let pathname = window.location.pathname;
+    let lastSegment = pathname.split("/").pop();
+    let replacedName = lastSegment.replaceAll("-", " ");
+    setName(replacedName);
+    console.log(categoryName);
+  }, [window.location.pathname]);
+
   // RESPONSIVENESS
   const Mobile = ({ children }) => {
     const isMobile = useMediaQuery({ minWidth: 0, maxWidth: 600 });
@@ -32,23 +48,35 @@ const Index = () => {
     return isTV ? children : null;
   };
 
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ["Poppins", "Chakra Petch"],
-      },
-    });
-  }, []);
-
   return (
     <>
       <Navbar />
       <Sidebar />
-      <div className="mx-auto mb-10" style={{ width: "88%" }}>
-        <h1 className="text-2xl font-semibold mb-2 mt-16 ml-2">Үр дүн : </h1>
-        <h1 className="text-sm font-medium ml-2">
-          Нийт хайлтын тоо: <span className="font-semibold">366</span>
+      <div
+        className="w-full h-64 flex items-end justify-center"
+        style={{
+          backgroundImage: "url(https://i.imgur.com/2hGSijN.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <h1
+          id="categoryName"
+          style={{ textShadow: "2px 2px 2px #000" }}
+          className="uppercase text-6xl text-white font-semibold mb-6 dark:text-gray-300"
+        >
+          {categoryName}
         </h1>
+      </div>
+
+      <div className="mx-auto mb-10" style={{ width: "88%" }}>
+        <div className="dark:text-white ml-4">
+          <h1 className="text-2xl font-semibold mb-2 mt-16">Үр дүн : </h1>
+          <h1 className="text-sm font-medium">
+            Нийт хайлтын тоо: <span className="font-semibold">366</span>
+          </h1>
+        </div>
+
         <Mobile>
           <div className="w-full mx-auto mt-8 grid grid-cols-1 gap-8">
             <Card />
@@ -112,6 +140,17 @@ const Index = () => {
       </div>
 
       <Footer />
+      <style jsx>{`
+        #categoryName::before,
+        #categoryName::after {
+          display: inline-block;
+          content: "";
+          border-top: 3px solid white;
+          width: 10rem;
+          margin: 0 1rem;
+          transform: translateY(-1.1rem);
+        }
+      `}</style>
     </>
   );
 };
