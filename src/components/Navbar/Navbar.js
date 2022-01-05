@@ -50,24 +50,6 @@ const Navbar = (props) => {
          setNavbarHidden(false);
          distanceScrolled = 0;
       }
-      if (distanceScrolled >= 30) {
-         setNavbarHidden(true);
-         distanceScrolled = 0;
-      }
-      if (window.scrollY >= pagePosition) {
-         pagePosition = window.scrollY;
-         setNavbarHidden(false);
-         distanceScrolled = 0;
-      } else {
-         distanceScrolled++;
-      }
-      console.log(distanceScrolled);
-   };
-   const hideOnUp = () => {
-      if (window.scrollY < 40) {
-         setNavbarHidden(false);
-         distanceScrolled = 0;
-      }
       if (distanceScrolled >= 35) {
          setNavbarHidden(true);
          distanceScrolled = 0;
@@ -182,9 +164,15 @@ const Navbar = (props) => {
                         Post project
                      </button>
                   </Link>
-                  <button id="transitionBtn" className="hover:text-green-500">
-                     Explore
-                  </button>
+                  <Link to={"explore"}>
+                     <button
+                        id="transitionBtn"
+                        className="hover:text-green-500"
+                     >
+                        Explore
+                     </button>
+                  </Link>
+
                   <button id="transitionBtn" className="hover:text-green-500">
                      Become a seller
                   </button>
