@@ -19,15 +19,15 @@ const Index = () => {
    return (
       <>
          <Navbar />
-         <div className="w-full h-full bg-gray-200 pt-7">
+         <div className="w-full h-full bg-gray-200 pt-7 dark:bg-gray-900">
             <main
                id="PostJobGrids"
                style={{ width: "87%" }}
-               className="mx-auto grid grid-cols-2 gap-10 pb-10"
+               className="mx-auto grid grid-cols-2 gap-10 pb-10 dark:bg-gray-900"
             >
                <div
                   id="PostJobGrid1"
-                  className="bg-white rounded-sm p-4 flex flex-col"
+                  className="bg-white rounded-sm p-4 flex flex-col dark:bg-gray-700"
                >
                   <div className="w-full border-b pb-5">
                      <h1 className="text-3xl mb-1">Post a project</h1>
@@ -173,7 +173,7 @@ const Index = () => {
                </div>
                <div
                   id="PostJobGrid2"
-                  className="bg-gray-100 rounded-sm flex flex-col items-center h-min"
+                  className="bg-gray-100 rounded-sm flex flex-col items-center h-min dark:bg-gray-700"
                >
                   <h1 className="text-gray-500 text-2xl font-bold my-5">
                      USEFUL TIPS
