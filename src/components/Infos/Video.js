@@ -46,17 +46,19 @@ const index = (props) => {
             style={{ fontFamily: "Roboto, sans-serif" }}
             className="flex flex-col justify-between"
           >
-            <h1 className="text-4xl font-semibold text-gray-800 mb-6">
+            <h1 className="text-4xl font-semibold text-gray-800 mb-6 dark:text-gray-300">
               A whole world of freelance talent at your fingertips
             </h1>
             {data.map((data) => {
               return (
                 <div>
                   <div className="flex items-center mb-1.5">
-                    <BsCheckCircle className="text-2xl text-gray-500 mr-3" />
-                    <h1 className="text-lg text-gray-800 font-bold">{data.title}</h1>
+                    <BsCheckCircle className="text-2xl text-gray-500 mr-3 dark:text-gray-300" />
+                    <h1 className="text-lg text-gray-800 font-bold dark:text-gray-300">
+                      {data.title}
+                    </h1>
                   </div>
-                  <h1 style={{ color: "#62646a" }} className="text-lg  mb-6 font-normal">
+                  <h1 className="text-lg text-gray-500 mb-6 font-normal dark:text-gray-400">
                     {data.text}
                   </h1>
                 </div>

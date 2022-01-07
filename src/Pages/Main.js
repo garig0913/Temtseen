@@ -62,7 +62,10 @@ const Main = () => {
         <main style={{ width: "88%" }} className="mx-auto h-auto">
           <PartnerSlider className="mx-auto" />
           <div className="w-full h-auto mt-24">
-            <h1 className="lg:text-4xl md:text-3xl sm:text-3xl xs:text-3xl mb-6 font-medium text-gray-700">
+            <h1
+              id="popularServices"
+              className="lg:text-4xl md:text-3xl sm:text-3xl xs:text-3xl mb-6 font-medium text-gray-700 dark:text-gray-300"
+            >
               Popular professional services
             </h1>
             <CardSlider2 />
@@ -90,6 +93,17 @@ const Main = () => {
         </main>
         <Footer />
       </Portrait>
+      <style jsx>{`
+        #popularServices::after {
+          display: inline-block;
+          content: "";
+          border-top: 3px solid white;
+          width: 15rem;
+          margin: 0 1rem;
+          transform: translateY(-0.4rem);
+          overflow: hidden;
+        }
+      `}</style>
     </>
   );
 };

@@ -44,11 +44,13 @@ const Index = () => {
     <>
       <Navbar />
       <Sidebar />
-      <div className="mx-auto mb-10" style={{ width: "88%" }}>
-        <h1 className="text-2xl font-semibold mb-2 mt-16 ml-2">Үр дүн : </h1>
-        <h1 className="text-sm font-medium ml-2">
-          Нийт хайлтын тоо: <span className="font-semibold">366</span>
-        </h1>
+      <div className="mx-auto mb-16" style={{ width: "88%" }}>
+        <div className="ml-4 text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl font-semibold mb-2 mt-16">Үр дүн : </h1>
+          <h1 className="text-sm font-medium">
+            Нийт хайлтын тоо: <span className="font-semibold">366</span>
+          </h1>
+        </div>
         <Mobile>
           <div className="w-full mx-auto mt-8 grid grid-cols-1 gap-8">
             <Card />
