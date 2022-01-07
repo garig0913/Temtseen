@@ -3,6 +3,7 @@ import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/StaticNavbar";
 import WebFont from "webfontloader";
 import { Link } from "react-router-dom";
+import Tips from "../components/Infos/UsefulTips";
 
 const Index = () => {
    useEffect(() => {
@@ -29,21 +30,21 @@ const Index = () => {
                   id="PostJobGrid1"
                   className="bg-white rounded-sm p-4 flex flex-col dark:bg-gray-700"
                >
-                  <div className="w-full border-b pb-5">
+                  <div className="w-full border-b pb-5 dark:text-gray-200">
                      <h1 className="text-3xl mb-1">Post a project</h1>
                      <p className="text-xl font-thin">
                         Describe what you need, then receive custom proposals
                         from freelancers.
                      </p>
                   </div>
-                  <p className="text-lg font-thin text-gray-500 my-10">
+                  <p className="text-lg font-thin text-gray-500 my-10 dark:text-gray-300">
                      Select a relevant category so that freelancers can find
                      your project
                   </p>
                   <div className="flex">
                      <div className="w-full">
                         <label
-                           className="text-sm text-gray-500 font-semibold"
+                           className="text-sm text-gray-500 font-semibold dark:text-gray-300"
                            htmlFor="PostJobOption"
                         >
                            CATEGORY
@@ -89,7 +90,12 @@ const Index = () => {
                      </div>
 
                      <div className="w-full">
-                        <label htmlFor="PostJobOption">SUBCATEGORY</label>
+                        <label
+                           htmlFor="PostJobOption"
+                           className="dark:text-gray-100"
+                        >
+                           SUBCATEGORY
+                        </label>
                         <select
                            onChange={() => SetsecondSelect(true)}
                            disabled={firstSelect ? false : true}
@@ -171,42 +177,7 @@ const Index = () => {
                      )}
                   </div>
                </div>
-               <div
-                  id="PostJobGrid2"
-                  className="bg-gray-100 rounded-sm flex flex-col items-center h-min dark:bg-gray-700"
-               >
-                  <h1 className="text-gray-500 text-2xl font-bold my-5">
-                     USEFUL TIPS
-                  </h1>
-                  <div
-                     style={{
-                        boxShadow: "rgba(0, 0, 0, 0.45) 0px 25px 20px -20px",
-                     }}
-                     className="w-11/12 p-4 bg-white rounded border border-gray-300 text-gray-500"
-                  >
-                     <h1 className="mb-4">
-                        <span className="text-gray-600 font-bold mr-1">1.</span>
-                        Describe your project in as much detail as you can
-                        comfortably reveal - it will increase the quality of
-                        proposals you receive and shorten the selection process.
-                     </h1>
-                     <h1 className="mb-4">
-                        <span className="text-gray-600 font-bold mr-1">2.</span>
-                        Upload as much relevant information (pictures,
-                        documents, specifications, links, etc) as possible to
-                        get a realistic quote.
-                     </h1>
-                     <h1 className="mb-5">
-                        <span className="text-gray-600 font-bold mr-1">3.</span>
-                        Match the experience level to your requirements –
-                        remember, you’re looking for the best you can afford,
-                        not the cheapest you can get.
-                     </h1>
-                     <h1>
-                        For more helpful tips, see our guide Post a project
-                     </h1>
-                  </div>
-               </div>
+               <Tips />
             </main>
          </div>
          <Footer />

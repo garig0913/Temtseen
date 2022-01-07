@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/StaticNavbar";
+import Tips from "../components/Infos/UsefulTips";
 import WebFont from "webfontloader";
 import { FaFacebookF } from "react-icons/fa";
 import HoverInput from "../components/Inputs/HoverInput";
@@ -25,7 +26,7 @@ const Index = () => {
    return (
       <>
          <Navbar />
-         <div className="w-full h-full bg-gray-200 pt-7">
+         <div className="w-full h-full bg-gray-200 pt-7 dark:bg-gray-900">
             <main
                id="PostJobGrids"
                style={{ width: "87%" }}
@@ -34,7 +35,7 @@ const Index = () => {
                {/* GRID1 */}
                <div
                   id="PostJobGrid1"
-                  className="bg-white rounded-sm p-5 flex flex-col"
+                  className="bg-white rounded-sm p-5 flex flex-col dark:bg-gray-700 dark:text-gray-200"
                >
                   <div className="w-full border-b pb-5">
                      <h1 className="text-3xl mb-1">Post a project</h1>
@@ -47,10 +48,10 @@ const Index = () => {
                      style={{ gridTemplateColumns: "1fr 0.85fr" }}
                      className="grid grid-cols-2 gap-10 mt-10"
                   >
-                     <div className="flex flex-col ">
+                     <div className="flex flex-col">
                         <div className="flex flex-col">
                            <label
-                              className="text-sm font-semibold text-gray-500"
+                              className="text-sm font-semibold text-gray-500 dark:text-gray-200"
                               htmlFor="PostJobEmail"
                            >
                               EMAIL ADDRESS
@@ -82,7 +83,7 @@ const Index = () => {
                         </button>
                      </div>
                   </div>
-                  <h1 className="text-gray-500 font-light text-lg mt-24 mb-16">
+                  <h1 className="text-gray-500 font-light text-lg mt-24 mb-16 dark:text-gray-200">
                      Select a relevant category so that freelancers can find
                      your project
                   </h1>
@@ -95,7 +96,7 @@ const Index = () => {
                   <div className="block w-full mb-10">
                      <div className="flex justify-between">
                         <label
-                           className="text-sm font-semibold text-gray-500"
+                           className="text-sm font-semibold text-gray-500 dark:text-gray-200"
                            htmlFor="PostJobEmail"
                         >
                            PROJECT DESCRIPTION
@@ -110,14 +111,14 @@ const Index = () => {
                         id="PostJobEmail"
                         className="pl-3 focus:outline-none mt-2 bg-gray-100 focus:bg-white w-full border border-gray-500 rounded-md py-1 h-40"
                      ></textarea>
-                     <p className="text-sm text-gray-400 font-light mt-1">
+                     <p className="text-sm text-gray-400 font-light mt-1 dark:text-gray-200">
                         Be descriptive, projects with good descriptions are more
                         popular with our freelancers.
                      </p>
                   </div>
                   <div className="flex flex-col">
                      <div className="flex justify-between">
-                        <h1 className="text-sm font-semibold text-gray-500">
+                        <h1 className="text-sm font-semibold text-gray-500 dark:text-gray-200">
                            UPLOAD SAMPLES AND OTHER HELPFUL MATERIAL
                         </h1>
                         <div className="relative">
@@ -142,7 +143,7 @@ const Index = () => {
                   </div>
                   <div className="w-full flex mt-14 gap-10">
                      <div>
-                        <h1 className="text-sm font-semibold text-gray-500">
+                        <h1 className="text-sm font-semibold text-gray-500 dark:text-gray-200 mb-1">
                            BUDGET
                         </h1>
                         <div className="flex items-center border rounded-md border-gray-500">
@@ -155,7 +156,7 @@ const Index = () => {
                         </div>
                      </div>
                      <div>
-                        <h1 className="text-sm font-semibold text-gray-500">
+                        <h1 className="text-sm font-semibold text-gray-500 dark:text-gray-200 mb-1">
                            CURRENCY
                         </h1>
                         <div className="flex items-center border rounded-md border-gray-500">
@@ -179,42 +180,7 @@ const Index = () => {
                   </div>
                </div>
                {/* GRID2 */}
-               <div
-                  id="PostJobGrid2"
-                  className="bg-gray-100 rounded-sm flex flex-col items-center h-min"
-               >
-                  <h1 className="text-gray-500 text-2xl font-bold my-5">
-                     USEFUL TIPS
-                  </h1>
-                  <div
-                     style={{
-                        boxShadow: "rgba(0, 0, 0, 0.45) 0px 20px 20px -20px",
-                     }}
-                     className="w-11/12 p-4 bg-white rounded border border-gray-300 text-gray-500"
-                  >
-                     <h1 className="mb-4">
-                        <span className="text-gray-600 font-bold mr-1">1.</span>
-                        Describe your project in as much detail as you can
-                        comfortably reveal - it will increase the quality of
-                        proposals you receive and shorten the selection process.
-                     </h1>
-                     <h1 className="mb-4">
-                        <span className="text-gray-600 font-bold mr-1">2.</span>
-                        Upload as much relevant information (pictures,
-                        documents, specifications, links, etc) as possible to
-                        get a realistic quote.
-                     </h1>
-                     <h1 className="mb-5">
-                        <span className="text-gray-600 font-bold mr-1">3.</span>
-                        Match the experience level to your requirements –
-                        remember, you’re looking for the best you can afford,
-                        not the cheapest you can get.
-                     </h1>
-                     <h1>
-                        For more helpful tips, see our guide Post a project
-                     </h1>
-                  </div>
-               </div>
+               <Tips />
             </main>
          </div>
          <Footer />
