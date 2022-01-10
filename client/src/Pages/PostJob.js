@@ -22,7 +22,55 @@ const Index = () => {
    }, []);
 
    const [secondSelect, SetSecondSelect] = useState(false);
-   console.log(secondSelect);
+
+   const [email, Setemail] = useState("");
+   const [firstName, SetfirstName] = useState("");
+   const [lastName, SetlastName] = useState("");
+   const [projectTitle, SetprojectTitle] = useState("");
+   const [projectDesc, SetprojectDesc] = useState("");
+   const [imgUrl, SetimgUrl] = useState("");
+   const [budget, Setbudget] = useState("");
+   const [currency, Setcurrency] = useState("USD");
+
+   const submitHandler = () => {
+      const post = {
+         email: email,
+         firstName: firstName,
+         lastName: lastName,
+         projectTitle: projectTitle,
+         projectDesc: projectDesc,
+         imgUrl: imgUrl,
+         budget: budget,
+         currency: currency,
+      };
+      if (
+         email &&
+         firstName &&
+         lastName &&
+         projectTitle &&
+         projectDesc &&
+         imgUrl &&
+         budget &&
+         currency !== ""
+      ) {
+         fetch("http://localhost:3001/postProject", {
+            method: "post",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify(post),
+         })
+            .then((response) => {
+               if (!response.ok) {
+                  throw Error("Could not post project...");
+               }
+               return response.json();
+            })
+            .then((result) => alert(result.message))
+            .catch((err) => alert(err.message));
+      }
+   };
+
    return (
       <>
          <Navbar />
@@ -57,13 +105,29 @@ const Index = () => {
                               EMAIL ADDRESS
                            </label>
                            <input
+                              onChange={(e) => Setemail(e.target.value)}
+                              value={email}
                               id="PostJobEmail"
                               className="focus:outline-none mt-2 border border-gray-300 rounded-md py-1.5 pl-3"
                            />
                         </div>
                         <div className="flex gap-5 mt-10">
-                           <HoverInput label="FIRST NAME" py="1.5" />
-                           <HoverInput label="LAST NAME" py="1.5">
+                           <HoverInput
+                              onChange={(e) => SetfirstName(e.target.value)}
+                              value={firstName}
+                              label="FIRST NAME"
+                              py="1.5"
+                              id="firstName"
+                              htmlfor="firstName"
+                           />
+                           <HoverInput
+                              onChange={(e) => SetlastName(e.target.value)}
+                              value={lastName}
+                              label="LAST NAME"
+                              py="1.5"
+                              id="lastName"
+                              htmlfor="lastName"
+                           >
                               <AiFillQuestionCircle className="text-blue-600 text-sm" />
                            </HoverInput>
                         </div>
@@ -88,16 +152,20 @@ const Index = () => {
                      your project
                   </h1>
                   <HoverInput
+                     onChange={(e) => SetprojectTitle(e.target.value)}
+                     value={projectTitle}
                      placeholder="e.g I need a flyer and poster created"
                      label="PROJECT TITLE"
                      py="2"
                      desc="Try to summarise your project in one sentence."
+                     id="projectTitle"
+                     htmlfor="projectTitle"
                   />
                   <div className="block w-full mb-10">
                      <div className="flex justify-between">
                         <label
                            className="text-sm font-semibold text-gray-500 dark:text-gray-200"
-                           htmlFor="PostJobEmail"
+                           htmlFor="projectDescription"
                         >
                            PROJECT DESCRIPTION
                         </label>
@@ -105,10 +173,12 @@ const Index = () => {
                      </div>
 
                      <textarea
+                        onChange={(e) => SetprojectDesc(e.target.value)}
+                        value={projectDesc}
                         style={{
                            transition: "background-color 0.11s ease-in 0s",
                         }}
-                        id="PostJobEmail"
+                        id="projectDescription"
                         className="pl-3 focus:outline-none mt-2 bg-gray-100 focus:bg-white w-full border border-gray-500 rounded-md py-1 h-40"
                      ></textarea>
                      <p className="text-sm text-gray-400 font-light mt-1 dark:text-gray-200">
@@ -118,9 +188,12 @@ const Index = () => {
                   </div>
                   <div className="flex flex-col">
                      <div className="flex justify-between">
-                        <h1 className="text-sm font-semibold text-gray-500 dark:text-gray-200">
-                           UPLOAD SAMPLES AND OTHER HELPFUL MATERIAL
-                        </h1>
+                        <label
+                           htmlFor="postJobImg"
+                           className="text-sm font-semibold text-gray-500 dark:text-gray-200"
+                        >
+                           DROP IMAGE URL
+                        </label>
                         <div className="relative">
                            <AiFillQuestionCircle className="text-blue-600 text-sm" />
                            <div
@@ -132,14 +205,21 @@ const Index = () => {
                         </div>
                      </div>
 
-                     <label
+                     <input
+                        onChange={(e) => SetimgUrl(e.target.value)}
+                        value={imgUrl}
+                        id="postJobImg"
+                        type="text"
+                        className="py-2 px-3 mt-2 focus:outline-none border border-gray-500 rounded"
+                     />
+                     {/* <label
                         className="mt-2 text-gray-600 italic text-sm text-center bg-gray-100 focus:bg-white w-full border-dashed border border-gray-800 rounded-md py-10"
                         htmlFor="PostJobFile"
                      >
                         Drop files here <br />
                         or browse to add attachments
                      </label>
-                     <input type="file" id="PostJobFile" hidden />
+                     <input type="file" id="PostJobFile" hidden /> */}
                   </div>
                   <div className="w-full flex mt-14 gap-10">
                      <div>
@@ -149,6 +229,8 @@ const Index = () => {
                         <div className="flex items-center border rounded-md border-gray-500">
                            <BsCurrencyDollar className="ml-3 text-gray-600" />
                            <input
+                              onChange={(e) => Setbudget(e.target.value)}
+                              value={budget}
                               type="number"
                               placeholder="0.00"
                               className="px-4 py-2 text-gray-800 focus:outline-none"
@@ -161,10 +243,15 @@ const Index = () => {
                         </h1>
                         <div className="flex items-center border rounded-md border-gray-500">
                            <BsCurrencyDollar className="ml-3 text-gray-600" />
-                           <select className="px-3 py-2 w-44 focus:outline-none">
-                              <option value={BsCurrencyEuro}>USD</option>
-                              <option value={BsCurrencyEuro}>GBP</option>
-                              <option value={BsCurrencyEuro}>EUR</option>
+                           <select
+                              defaultValue="USD"
+                              id="postJobCurrency"
+                              onChange={(e) => console.log(e.target.value)}
+                              className="px-3 py-2 w-44 focus:outline-none"
+                           >
+                              <option value={"USD"}>USD</option>
+                              <option value={"GBP"}>GBP</option>
+                              <option value={"EUR"}>EUR</option>
                            </select>
                         </div>
                      </div>
@@ -172,6 +259,7 @@ const Index = () => {
 
                   <div>
                      <button
+                        onClick={submitHandler}
                         id="PostProjectBTN"
                         className="mt-10 mb-8 rounded py-4 px-8 flex items-center border text-white border-indigo-700 hover:text-blue-800"
                      >

@@ -7,7 +7,7 @@ const Index = (props) => {
          <div className="flex justify-between">
             <label
                className="text-sm font-semibold text-gray-500 dark:text-gray-200"
-               htmlFor="PostJobEmail"
+               htmlFor={props.htmlfor}
             >
                {props.label}
             </label>
