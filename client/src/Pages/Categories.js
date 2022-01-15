@@ -5,9 +5,18 @@ import Sidebar from "../components/Sidebar/Options";
 import Card from "../components/Cards/JobCards";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import axios from "axios";
+import { BsSortDownAlt, BsSortUpAlt } from "react-icons/bs";
 
 const Index = () => {
   const [categoryName, setName] = useState("");
+
+  const [data, setData] = useState(null);
+  const [sorting, setSorting] = useState(false);
+
+  let sorted = data && data.sort((a, b) => (+a.budget > +b.budget ? -1 : 1));
+
+  console.log(sorted);
 
   useEffect(() => {
     WebFont.load({
@@ -20,7 +29,18 @@ const Index = () => {
     let lastSegment = pathname.split("/").pop();
     let replacedName = lastSegment.replaceAll("-", " ");
     setName(replacedName);
-    console.log(categoryName);
+
+    axios
+      .get(`http://localhost:3001/getAllPosts?category=${replacedName}`)
+      .then((res) => {
+        setData(res.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .then(() => {
+        // always executed
+      });
   }, [window.location.pathname]);
 
   // RESPONSIVENESS
@@ -70,71 +90,102 @@ const Index = () => {
       </div>
 
       <div className="mx-auto mb-10" style={{ width: "88%" }}>
-        <div className="dark:text-white ml-4">
-          <h1 className="text-2xl font-semibold mb-2 mt-16">Үр дүн : </h1>
-          <h1 className="text-sm font-medium">
-            Нийт хайлтын тоо: <span className="font-semibold">366</span>
-          </h1>
+        <div className="dark:text-white ml-4 flex justify-between mt-16">
+          <div>
+            <h1 className="text-2xl font-semibold mb-2">Үр дүн : </h1>
+            <h1 className="text-sm font-medium">
+              Нийт хайлтын тоо: <span className="font-semibold">366</span>
+            </h1>
+          </div>
+
+          <div className="flex items-center">
+            <h1 className="text-md">sort price by:</h1>
+            <select
+              style={{ transition: "200ms" }}
+              className="focus:outline-none border border-gray-400
+             rounded py-px px-2 mt-0.5 ml-2 bg-gray-300 focus:bg-gray-50"
+            >
+              <option disabled selected hidden></option>
+              <option>Low to High</option>
+              <option>High to Low</option>
+              <option>none</option>
+            </select>
+          </div>
         </div>
 
         <Mobile>
           <div className="w-full mx-auto mt-8 grid grid-cols-1 gap-8">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {data &&
+              data.map((el) => {
+                return (
+                  <Card
+                    title={el.projectTitle}
+                    imgUrl={el.imgUrl}
+                    budget={el.budget}
+                    currency={el.currency}
+                  />
+                );
+              })}
           </div>
         </Mobile>
         <Tablet>
           <div className="w-full mx-auto mt-8 grid grid-cols-2 gap-5">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {data &&
+              data.map((el) => {
+                return (
+                  <Card
+                    title={el.projectTitle}
+                    imgUrl={el.imgUrl}
+                    budget={el.budget}
+                    currency={el.currency}
+                  />
+                );
+              })}
           </div>
         </Tablet>
         <TabletLandscape>
           <div className="w-full mx-auto mt-8 grid grid-cols-3 gap-6">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {data &&
+              data.map((el) => {
+                return (
+                  <Card
+                    title={el.projectTitle}
+                    imgUrl={el.imgUrl}
+                    budget={el.budget}
+                    currency={el.currency}
+                  />
+                );
+              })}
           </div>
         </TabletLandscape>
         <Desktop>
           <div className="w-full mx-auto mt-8 grid grid-cols-4 gap-8">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {data &&
+              data.map((el) => {
+                return (
+                  <Card
+                    title={el.projectTitle}
+                    imgUrl={el.imgUrl}
+                    budget={el.budget}
+                    currency={el.currency}
+                  />
+                );
+              })}
           </div>
         </Desktop>
         <TV>
           <div className="w-full mx-auto mt-8 grid grid-cols-5 gap-8">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {data &&
+              data.map((el) => {
+                return (
+                  <Card
+                    title={el.projectTitle}
+                    imgUrl={el.imgUrl}
+                    budget={el.budget}
+                    currency={el.currency}
+                  />
+                );
+              })}
           </div>
         </TV>
       </div>

@@ -8,13 +8,10 @@ const Index = (props) => {
   return (
     <>
       <div
-        style={{ gridTemplateRows: "1fr 1fr" }}
+        style={{ gridTemplateRows: "1.2fr 1fr" }}
         className="h-96 grid grid-rows-2 dark:text-white"
       >
-        <img
-          className="w-full h-full rounded-t-md"
-          src="https://images.unsplash.com/photo-1641176313801-0ec89258fa31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-        />
+        <img className="w-full h-full rounded-t-md overflow-hidden" src={props.imgUrl} />
         <div
           style={{
             boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
@@ -29,12 +26,12 @@ const Index = (props) => {
           />
           <div>
             <h1 style={{ fontSize: "0.9em" }} className="font-semibold">
-              enkhsaikhan gantulga
+              Elbegsaysan buya
             </h1>
             <h1 className="text-gray-400 text-sm font-semibold dark:text-gray-300">
               Шинэ фрийлансер
             </h1>
-            <h1 className="mt-4 font-medium">Видео эвлүүлэг Нэрийн хуудас ажлын үнэмлэх хийнэ</h1>
+            <h1 className="mt-4 font-medium">{props.title}</h1>
           </div>
           <div className="w-full flex justify-between border-t pt-3">
             <div className="relative">
@@ -65,7 +62,7 @@ const Index = (props) => {
               </div>
             </div>
 
-            <h1>45,000</h1>
+            <h1>{props.budget + props.currency}</h1>
           </div>
         </div>
       </div>
