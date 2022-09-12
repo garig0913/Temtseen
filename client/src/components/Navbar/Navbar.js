@@ -153,15 +153,15 @@ const Navbar = (props) => {
                 style={
                   navbar
                     ? {
-                        font: "Macan, Helvetica Neue, Helvetica, Arial, sans-serif",
-                        letterSpacing: "-2px",
-                        color: "#d85c27",
-                      }
+                      font: "Macan, Helvetica Neue, Helvetica, Arial, sans-serif",
+                      letterSpacing: "-2px",
+                      color: "#d85c27",
+                    }
                     : {
-                        font: "Macan, Helvetica Neue, Helvetica, Arial, sans-serif",
-                        letterSpacing: "-2px",
-                        color: "#46344e",
-                      }
+                      font: "Macan, Helvetica Neue, Helvetica, Arial, sans-serif",
+                      letterSpacing: "-2px",
+                      color: "#46344e",
+                    }
                 }
               >
                 fiverr<span className="text-green-400">.</span>
@@ -205,16 +205,16 @@ const Navbar = (props) => {
               </button>
             </Link>
             <Link to={"explore"}>
-              <button id="transitionBtn" className="hover:text-green-500">
+              <button id="transitionBtn" className="hover:text-green-500 dark:text-gray-200">
                 Explore
               </button>
             </Link>
 
             <DarkToggle />
-            <button id="transitionBtn" className="hover:text-green-500">
+            <button id="transitionBtn" className="hover:text-green-500 dark:text-gray-200">
               Become a buyer
             </button>
-            <button id="transitionBtn" className="hover:text-green-500">
+            <button id="transitionBtn" className="hover:text-green-500 dark:text-gray-200">
               Sign in
             </button>
             <button
@@ -222,8 +222,8 @@ const Navbar = (props) => {
               style={{ transition: "190ms" }}
               className={
                 navbar
-                  ? "joinActive px-6 border border-gray-500 rounded mt-1 hover:bg-green-500 hover:text-gray-100 hover:border-gray-300"
-                  : "joinInactive px-6 border border-gray-500 rounded mt-1 hover:text-gray-100 hover:bg-green-500 hover:border-gray-700"
+                  ? "joinActive px-6 border border-gray-400 rounded mt-1 hover:bg-green-500 hover:text-gray-100 hover:border-gray-300"
+                  : "joinInactive px-6 border border-gray-500 rounded mt-1 hover:text-gray-100 hover:bg-green-500 hover:border-gray-700 dark:text-gray-200 dark:border-gray-200"
               }
             >
               Join

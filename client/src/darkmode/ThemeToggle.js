@@ -13,7 +13,7 @@ const Toggle = () => {
                className="flex items-center gap-2"
                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
-               <button>Light</button>
+               <button className="text-gray-200">Light</button>
                <FaSun className="text-gray-500 dark:text-gray-300 text-2xl cursor-pointer transition duration-700 ease-in-out" />
             </div>
          ) : (

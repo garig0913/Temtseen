@@ -107,13 +107,13 @@ const Slider2 = (props) => {
               style={
                 theme === "dark"
                   ? {
-                      color: `${data[slideIndex].color}`,
-                      textShadow:
-                        "-1px -1px 0 #FBFAF5, 1px -1px 0 #FBFAF5, -1px 1px 0 #FBFAF5, 1px 1px 0 #FBFAF5",
-                    }
+                    color: `${data[slideIndex].color}`,
+                    textShadow:
+                      "-1px -1px 0 #FBFAF5, 1px -1px 0 #FBFAF5, -1px 1px 0 #FBFAF5, 1px 1px 0 #FBFAF5",
+                  }
                   : {
-                      color: `${data[slideIndex].color}`,
-                    }
+                    color: `${data[slideIndex].color}`,
+                  }
               }
               className="text-7xl font-black mb-7"
             >

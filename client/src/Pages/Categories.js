@@ -10,13 +10,8 @@ import { BsSortDownAlt, BsSortUpAlt } from "react-icons/bs";
 
 const Index = () => {
   const [categoryName, setName] = useState("");
-
   const [data, setData] = useState(null);
-  const [sorting, setSorting] = useState(false);
-
-  let sorted = data && data.sort((a, b) => (+a.budget > +b.budget ? -1 : 1));
-
-  console.log(sorted);
+  const [sorting, setSorting] = useState("none");
 
   useEffect(() => {
     WebFont.load({
@@ -43,6 +38,20 @@ const Index = () => {
       });
   }, [window.location.pathname]);
 
+  useEffect(() => {
+    switch (sorting) {
+      case "high to low":
+        setData(data && data.sort((a, b) => (+a.budget > +b.budget ? -1 : 1)));
+        console.log()
+        break;
+      case "low to high":
+        setData(data && data.sort((a, b) => (+a.budget > +b.budget ? -1 : 1)));
+        break;
+      case "none":
+        console.log("none");
+    }
+  }, [sorting]);
+
   // RESPONSIVENESS
   const Mobile = ({ children }) => {
     const isMobile = useMediaQuery({ minWidth: 0, maxWidth: 600 });
@@ -66,6 +75,10 @@ const Index = () => {
   const TV = ({ children }) => {
     const isTV = useMediaQuery({ minWidth: 1800 });
     return isTV ? children : null;
+  };
+
+  const sortHandler = (e) => {
+    setSorting(e.target.value);
   };
 
   return (
@@ -101,14 +114,15 @@ const Index = () => {
           <div className="flex items-center">
             <h1 className="text-md">sort price by:</h1>
             <select
+              onChange={(e) => sortHandler(e)}
               style={{ transition: "200ms" }}
               className="focus:outline-none border border-gray-400
              rounded py-px px-2 mt-0.5 ml-2 bg-gray-300 focus:bg-gray-50"
             >
               <option disabled selected hidden></option>
-              <option>Low to High</option>
-              <option>High to Low</option>
-              <option>none</option>
+              <option value={"low to high"}>Low to High</option>
+              <option value={"high to low"}>High to Low</option>
+              <option value={"none"}>none</option>
             </select>
           </div>
         </div>
